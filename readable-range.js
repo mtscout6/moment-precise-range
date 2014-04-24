@@ -21,6 +21,8 @@
 		return moment.preciseDiff(this, d2);
 	};
 	moment.preciseDiff = function(d1, d2) {
+		relativeTime = moment.fn.lang()._relativeTime;
+
 		var m1 = moment(d1), m2 = moment(d2);
 		if (m1.isSame(m2)) {
 			return STRINGS.nodiff;
@@ -68,7 +70,7 @@
 			// use monent relative time concept
 			// use a instead of 1, eg. '1 month' -> 'a month'
 			// don't show exact seconds
-			return num === 1 ? STRINGS[word] : (word === 'second' ? STRINGS[word] : (num + ' ' + STRINGS[word + 's']));
+			return num === 1 ? STRINGS[word] : (word === 'second' ? STRINGS[word] : (num + STRINGS[word + 's']));
 		}
 		var result = [];
 
