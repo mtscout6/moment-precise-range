@@ -1,31 +1,13 @@
 (function(moment) {
-	var relativeTime = moment.fn.lang()._relativeTime;
 
-	var STRINGS = {
-		nodiff: '',
-		year: relativeTime.y || 'a year',
-		years: relativeTime.yy.replace(/%d/i, '') || 'years',
-		month: relativeTime.M || 'a month',
-		months: relativeTime.MM.replace(/%d/i, '') || 'months',
-		day: relativeTime.d || 'a day',
-		days: relativeTime.dd.replace(/%d/i, '') || 'days',
-		hour: relativeTime.h || 'an hour',
-		hours: relativeTime.hh.replace(/%d/i, '') || 'hours',
-		minute: relativeTime.m || 'a minute',
-		minutes: relativeTime.mm.replace(/%d/i, '') || 'minutes',
-		second: relativeTime.s || 'a second',
-		seconds: relativeTime.s || 'seconds',
-		delimiter: ' '
-	};
 	moment.fn.preciseDiff = function(d2) {
 		return moment.preciseDiff(this, d2);
 	};
 	moment.preciseDiff = function(d1, d2) {
-		relativeTime = moment.fn.lang()._relativeTime;
 
 		var m1 = moment(d1), m2 = moment(d2);
 		if (m1.isSame(m2)) {
-			return STRINGS.nodiff;
+			return '';
 		}
 		if (m1.isAfter(m2)) {
 			var tmp = m1;
@@ -66,33 +48,50 @@
 			yDiff--;
 		}
 
-		function pluralize(num, word) {
-			// use monent relative time concept
-			// use a instead of 1, eg. '1 month' -> 'a month'
-			// don't show exact seconds
-			return num === 1 ? STRINGS[word] : (word === 'second' ? STRINGS[word] : (num + STRINGS[word + 's']));
-		}
 		var result = [];
 
+		var originalRelative = {};
+		originalRelative.s = moment.relativeTimeThreshold('s');
+		originalRelative.m = moment.relativeTimeThreshold('m');
+		originalRelative.h = moment.relativeTimeThreshold('h');
+		originalRelative.dd = moment.relativeTimeThreshold('dd');
+		originalRelative.dm = moment.relativeTimeThreshold('dm');
+		originalRelative.dy = moment.relativeTimeThreshold('dy');
+
+		moment.relativeTimeThreshold('s',60);
+		moment.relativeTimeThreshold('m',60);
+		moment.relativeTimeThreshold('h',23);
+		moment.relativeTimeThreshold('dd',28);
+		moment.relativeTimeThreshold('dm',45);
+		moment.relativeTimeThreshold('dy',365);
+
 		if (yDiff) {
-			result.push(pluralize(yDiff, 'year'));
+			result.push(moment.duration(yDiff,'year').humanize());
 		}
 		if (mDiff) {
-			result.push(pluralize(mDiff, 'month'));
+			result.push(moment.duration(mDiff,'month').humanize())
 		}
 		if (dDiff) {
-			result.push(pluralize(dDiff, 'day'));
+			result.push(moment.duration(dDiff,'day').humanize());
 		}
 		if (hourDiff) {
-			result.push(pluralize(hourDiff, 'hour'));
+			result.push(moment.duration(hourDiff,'hour').humanize());
 		}
 		if (minDiff) {
-			result.push(pluralize(minDiff, 'minute'));
+			result.push(moment.duration(minDiff,'minute').humanize());
 		}
 		if (secDiff) {
-			result.push(pluralize(secDiff, 'second'));
+			result.push(moment.duration(secDiff,'second').humanize());
 		}
 
-		return result.join(STRINGS.delimiter);
+		moment.relativeTimeThreshold('s',originalRelative.s);
+		moment.relativeTimeThreshold('m',originalRelative.m);
+		moment.relativeTimeThreshold('h',originalRelative.h);
+		moment.relativeTimeThreshold('dd',originalRelative.dd);
+		moment.relativeTimeThreshold('dm',originalRelative.dm);
+		moment.relativeTimeThreshold('dy',originalRelative.dy);
+
+		return result.join(' ');
 	};
+
 }(moment));
