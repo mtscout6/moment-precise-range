@@ -50,14 +50,6 @@
 
 		var result = [];
 
-		var originalRelative = {};
-		originalRelative.s = moment.relativeTimeThreshold('s');
-		originalRelative.m = moment.relativeTimeThreshold('m');
-		originalRelative.h = moment.relativeTimeThreshold('h');
-		originalRelative.dd = moment.relativeTimeThreshold('dd');
-		originalRelative.dm = moment.relativeTimeThreshold('dm');
-		originalRelative.dy = moment.relativeTimeThreshold('dy');
-
 		moment.relativeTimeThreshold('s',60);
 		moment.relativeTimeThreshold('m',60);
 		moment.relativeTimeThreshold('h',23);
@@ -69,7 +61,7 @@
 			result.push(moment.duration(yDiff,'year').humanize());
 		}
 		if (mDiff) {
-			result.push(moment.duration(mDiff,'month').humanize())
+			result.push(moment.duration(mDiff,'month').humanize());
 		}
 		if (dDiff) {
 			result.push(moment.duration(dDiff,'day').humanize());
@@ -83,13 +75,6 @@
 		if (secDiff) {
 			result.push(moment.duration(secDiff,'second').humanize());
 		}
-
-		moment.relativeTimeThreshold('s',originalRelative.s);
-		moment.relativeTimeThreshold('m',originalRelative.m);
-		moment.relativeTimeThreshold('h',originalRelative.h);
-		moment.relativeTimeThreshold('dd',originalRelative.dd);
-		moment.relativeTimeThreshold('dm',originalRelative.dm);
-		moment.relativeTimeThreshold('dy',originalRelative.dy);
 
 		return result.join(' ');
 	};

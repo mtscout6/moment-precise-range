@@ -25,43 +25,43 @@ describe("preciseDiff", function() {
 
 		it("one minute", function() {
 			test('2013-01-01 00:00:00', '2013-01-01 00:01:00', 'a minute');
-		})
+		});
 
 		it("multiple minutes", function() {
 			test('2013-01-01 00:00:00', '2013-01-01 00:02:00', '2 minutes');
-		})
+		});
 
 		it("one hour", function() {
 			test('2013-01-01 00:00:00', '2013-01-01 01:00:00', 'an hour');
-		})
+		});
 
 		it("multiple hours", function() {
 			test('2013-01-01 00:00:00', '2013-01-01 02:00:00', '2 hours');
-		})
+		});
 
 		it("one day", function() {
 			test('2013-01-01 00:00:00', '2013-01-02 00:00:00', 'a day');
-		})
+		});
 
 		it("multiple days", function() {
 			test('2013-01-01 00:00:00', '2013-01-03 00:00:00', '2 days');
-		})
+		});
 
 		it("one month", function() {
 			test('2013-01-01 00:00:00', '2013-02-01 00:00:00', 'a month');
-		})
+		});
 
 		it("multiple months", function() {
 			test('2013-01-01 00:00:00', '2013-03-01 00:00:00', '2 months');
-		})
+		});
 
 		it("one year", function() {
 			test('2013-01-01 00:00:00', '2014-01-01 00:00:00', 'a year');
-		})
+		});
 
 		it("multiple years", function() {
 			test('2013-01-01 00:00:00', '2015-01-01 00:00:00', '2 years');
-		})
+		});
 	});
 
 	describe("counting back", function() {
