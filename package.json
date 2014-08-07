@@ -20,7 +20,7 @@
     "url": "https://github.com/mtscout6/moment-precise-range/issues"
   },
   "homepage": "https://github.com/mtscout6/moment-precise-range",
-  "peerDependencies": {
+  "dependencies": {
     "moment": "^2.8.1"
   },
   "devDependencies": {
