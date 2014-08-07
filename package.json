@@ -1,0 +1,26 @@
+{
+  "name": "moment-precise-range",
+  "version": "0.0.0",
+  "description": "moment js with precision time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mtscout6/moment-precise-range.git"
+  },
+  "keywords": [
+    "moment"
+  ],
+  "author": "Rob Dawson",
+  "maintainer": "Matthew Smith <mtscout6@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mtscout6/moment-precise-range/issues"
+  },
+  "homepage": "https://github.com/mtscout6/moment-precise-range",
+  "peerDependencies": {
+    "moment": "^2.8.1"
+  }
+}
