@@ -31,5 +31,5 @@ console.log(result); // 3 months 11 days 14 hours 45 minutes a few seconds
 [coveralls-url]: https://coveralls.io/r/mtscout6/moment-precise-range
 [coveralls-image]: https://img.shields.io/coveralls/mtscout6/moment-precise-range.svg?branch=master
 
-[dependencies-url]: https://www.versioneye.com/user/projects/53c6e2d96c18d523e2000220
-[dependencies-image]: https://www.versioneye.com/user/projects/53c6e2d96c18d523e2000220/badge.svg
+[dependencies-url]: https://www.versioneye.com/user/projects/53e3f13ce0a229f1b7000057
+[dependencies-image]: https://www.versioneye.com/user/projects/53e3f13ce0a229f1b7000057/badge.svg
