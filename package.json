@@ -1,6 +1,6 @@
 {
   "name": "moment-precise-range",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "moment js with precision time",
   "main": "index.js",
   "scripts": {
