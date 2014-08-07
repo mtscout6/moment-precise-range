@@ -22,5 +22,8 @@
   "homepage": "https://github.com/mtscout6/moment-precise-range",
   "peerDependencies": {
     "moment": "^2.8.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4"
   }
 }
