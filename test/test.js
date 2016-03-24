@@ -1,12 +1,13 @@
 // lang = 'en'
-var moment = require('../');
+var moment = require('moment');
+var preciseDiff = require('../')(moment);
 var assert = require('assert');
 
 describe('preciseDiff', function() {
   function test(d1, d2, result, opts) {
     assert.equal(
-      moment.preciseDiff(moment(d1, 'YYYY-MM-DD HH:mm:ss'),
-                         moment(d2, 'YYYY-MM-DD HH:mm:ss'), opts),
+      preciseDiff(moment(d1, 'YYYY-MM-DD HH:mm:ss'),
+        moment(d2, 'YYYY-MM-DD HH:mm:ss'), opts),
     result);
   }
 
