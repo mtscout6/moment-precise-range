@@ -21,10 +21,9 @@
     "url": "https://github.com/mtscout6/moment-precise-range/issues"
   },
   "homepage": "https://github.com/mtscout6/moment-precise-range",
-  "dependencies": {
-    "moment": "^2.8.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "moment": "^2.8.1",
     "coveralls": "^2.10.1",
     "istanbul": "^0.3.0",
     "mocha": "^1.21.4",
