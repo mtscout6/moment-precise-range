@@ -4,12 +4,13 @@ var preciseDiff = require('../')(moment);
 var assert = require('assert');
 
 describe('preciseDiff', function() {
-  function test(d1, d2, result, opts) {
-    assert.equal(
-      preciseDiff(moment(d1, 'YYYY-MM-DD HH:mm:ss'),
-        moment(d2, 'YYYY-MM-DD HH:mm:ss'), opts),
-    result);
-  }
+    function test(d1, d2, result, opts, compare) {
+        var compare = compare || assert.equal;
+        compare(
+            preciseDiff(moment(d1, 'YYYY-MM-DD HH:mm:ss'),
+                        moment(d2, 'YYYY-MM-DD HH:mm:ss'), opts),
+            result);
+    }
 
   describe('order', function() {
     it('same date', function() {
@@ -151,4 +152,12 @@ describe('preciseDiff', function() {
       test('2001-11-12 13:01:43', '2014-02-01 01:03:01', '12 years 2 months 19 days 12 hours a minute a few seconds', {year: true, month: true, day: true, hour: true, minute: true, second: true});
     });
   });
+
+    describe('returns an object with the numbers', function() {
+        it ('gives years, months, days, hours, minutes, seconds', function() {
+            test('2006-12-21 14:01:02', '2001-11-12 15:41:07',
+                 {years: 5, months: 1, days: 8, hours: 22, minutes: 19, seconds: 55},
+                 {year: true, month: true, day: true, hour: true, minute: true, seconds: true, returnObject: true}, assert.deepEqual);
+        });
+    });
 });

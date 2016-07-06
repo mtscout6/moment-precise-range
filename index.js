@@ -11,7 +11,8 @@ module.exports = function(moment) {
         hour: true,
         minute: true,
         second: true,
-        joinSeparator: ' '
+        joinSeparator: ' ',
+        returnObject: false
     };
 
     return function preciseDiff(d1, d2, opts) {
@@ -88,9 +89,17 @@ module.exports = function(moment) {
         if (secDiff && opts.second) {
             result.push(moment.duration(secDiff, 'second').humanize());
         }
-        
+
         var joinSeparator = opts.joinSeparator || defaults.joinSeparator;
+        if (opts.returnObject)
+            return {years: moment.duration(yDiff, 'year').asYears(),
+                    months: moment.duration(mDiff, 'month').asMonths(),
+                    days: moment.duration(dDiff, 'day').asDays(),
+                    hours: moment.duration(hourDiff, 'hour').asHours(),
+                    minutes: moment.duration(minDiff, 'minute').asMinutes(),
+                    seconds: moment.duration(secDiff, 'second').asSeconds(),
+                   };
 
         return result.join(joinSeparator);
-    }
-}
+    };
+};
